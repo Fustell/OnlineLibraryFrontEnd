@@ -1,9 +1,9 @@
 const Endpoints = {
     AUTH: {
         LOGIN: "/auth/token/",
-        REFRESH: "/auth/token/refresh",
-        LOGOUT: "/auth/token/logout",
-        PROFILE:"/profile"
+        REFRESH: "/auth/token/refresh/",
+        LOGOUT: "/auth/logout/",
+        PROFILE:"/profile/"
     }
 };
 
