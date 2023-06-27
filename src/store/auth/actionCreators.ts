@@ -1,8 +1,8 @@
 import { Dispatch } from "@reduxjs/toolkit"
 import api from "../../api"
-import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
-import { loginStart, loginSucess, loginFailure, logoutSuccess,loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer" 
-import { useNavigate } from "react-router-dom"
+import { ILoginRequest } from "../../api/auth/types"
+import { loginStart, loginSucess, loginFailure, logoutSuccess } from "./authReducer" 
+import { NavigateFunction, useNavigate } from "react-router-dom"
 export const loginUser =
   (data: ILoginRequest) =>
     async (dispatch: Dispatch<any>): Promise<void> => {
@@ -21,14 +21,12 @@ export const loginUser =
     }
 
 export const logoutUser =
-  () =>
+  (navigate: NavigateFunction) =>
   async (dispatch: Dispatch): Promise<void> => {
       try {
 
         const res = await api.auth.logout()
         dispatch(logoutSuccess(res.data.refreshToken))
-
-        const navigate = useNavigate();;
         navigate('/');
       } catch (e) {
           console.error(e)
