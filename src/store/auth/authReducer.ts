@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export interface AuthState {
     authData: {
-        accessToken: string | null,
+        access: string | null,
         isLoading: boolean,
         error: string | null
     },
@@ -15,13 +15,13 @@ export interface AuthState {
 
 const initialState: AuthState = {
     authData: {
-        accessToken: null,
-        isLoading: false,
+        access: null,
+        isLoading: true,
         error:  null
     },
     profileData: {
         profile: null,
-        isLoading: false,
+        isLoading: true,
         error:  null,
     }
 }
@@ -41,7 +41,7 @@ export const authReducer = createSlice({
         ...state,
         authData: {
           ...state.authData,
-          accessToken: action.payload,
+          access: action.payload,
           isLoading: false,
           error:  null,
         }

@@ -1,21 +1,23 @@
 import { useSelector } from "react-redux";
 import {IRootState, useAppDispatch} from '../../store';
 import Login from "./components/Login";
-import { logoutUser } from "../../store/auth/actionCreators";
-import { useNavigate } from "react-router-dom";
-
+import { getProfile, logoutUser } from "../../store/auth/actionCreators";
 const Main = () => {
 
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
     const isLoggined = useSelector(
-        (state: IRootState) => !!state.auth.authData.accessToken
+        (state: IRootState) => !!state.auth.authData.access
     )
+
+    const profile = useSelector(
+        (state: IRootState) => state.auth.profileData.profile
+    );
 
     const renderProfile = () => {
         return (<div>
             <div>You successfull authenticated</div>
-        <button onClick={() => dispatch(logoutUser(navigate))}>Logout</button>
+        <button onClick={() => dispatch(logoutUser())}>Logout</button>
+        <button onClick={() => dispatch(getProfile())}>Update Profile</button>
         </div>);
     }
 

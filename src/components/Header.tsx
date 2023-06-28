@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
     const isLoggined = useSelector(
-        (state: IRootState) => !!state.auth.authData.accessToken
+        (state: IRootState) => !!state.auth.authData.access
     )
     return (
         <nav>
