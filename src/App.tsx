@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import {BrowserRouter as Router,Routes,Route, Navigate} from 'react-router-dom'
 import Dashboard from './pages/Dashboard/Dashboard';
-import Main from './pages/Main/Main';
+import LoginPage from './pages/LoginPage/LoginPage';
 import Header from './components';
 import { useSelector } from 'react-redux';
 import { IRootState, useAppDispatch } from './store';
 import { getProfile } from './store/auth/actionCreators';
+import { JSX } from 'react/jsx-runtime';
 
 
 function App() {
@@ -19,17 +20,33 @@ function App() {
   }, [dispatch])
   
 
-  const Element = () => {
+  const ProtectedRoute = (e: JSX.Element) => {
     const isLoading = useSelector(
       (state: IRootState) => !!state.auth.authData.isLoading
     );
-    console.log(isLoading)
     if(isLoggined){
-      return <Dashboard/>
+      return e;
     }
+    else{}
     if(!isLoading){
       return <Navigate to="/"/>
     }
+  }
+
+  const IsAlreadyLoginned = (e:JSX.Element) => {
+
+    const isLoading = useSelector(
+      (state: IRootState) => !!state.auth.authData.isLoading
+    );
+
+    if(!isLoggined && !isLoading){
+      return e;
+    }
+
+    if(!isLoading){
+      return <Navigate to="/"/>
+    }
+    
   }
 
   
@@ -37,8 +54,8 @@ function App() {
     <Router>
       <Header/>
         <Routes>
-          <Route path='/' element={<Main/>}/>
-          <Route path='/dashboard' element={Element()}/>
+          <Route path='/login' element={IsAlreadyLoginned(<LoginPage/>)}/>
+          <Route path='/dashboard' element={ProtectedRoute(<Dashboard/>)}/>
       </Routes>
     </Router>
   );

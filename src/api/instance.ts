@@ -30,7 +30,5 @@ axiosInstance.interceptors.response.use(
         if ((error.response?.status === 401) && isLoggedIn && error.request.url !== Endpoints.AUTH.LOGOUT) {
             store.dispatch(logoutUser())
         }
-  
-        // throw error
     }
   )
