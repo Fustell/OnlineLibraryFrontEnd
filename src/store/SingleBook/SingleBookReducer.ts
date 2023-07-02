@@ -10,6 +10,7 @@ export interface Book {
     slug: string| null,
     annotation: string| null,
     about: string| null,
+    book: string| null,
 }
 export interface SingleBookState {
     bookData:Book
@@ -28,6 +29,7 @@ const initialState: SingleBookState = {
     slug: null,
     annotation:  null,
     about:  null,
+    book: null,
 },
 isLoading: true,
 error: null

@@ -18,7 +18,7 @@ function App() {
   );
   useEffect(() => {
     dispatch(getProfile());
-  }, [])  
+  }, [dispatch])  
   
   const ProtectedRoute = (e: JSX.Element) => {
     const isLoading = useSelector(

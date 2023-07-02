@@ -10,7 +10,7 @@ const Dashboard =  () => {
 
     useEffect(() => {
         dispatch(getBooks());
-      }, [])
+      }, [dispatch])
       
 
     const books = useSelector(

@@ -8,6 +8,7 @@ export interface Book {
     slug: string| null,
     annotation: string| null,
     about: string| null,
+    book: string| null,
 }
 
 export interface IBooksResponse {
