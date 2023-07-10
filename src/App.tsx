@@ -6,8 +6,9 @@ import Header from './components';
 import { useSelector } from 'react-redux';
 import { IRootState, useAppDispatch } from './store';
 import { JSX } from 'react/jsx-runtime';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { getProfile } from './store/auth/actionCreators';
+import { logout } from './api/auth';
 
 
 function App() {  
@@ -15,10 +16,14 @@ function App() {
   const dispatch = useAppDispatch();
   const isLoggined = useSelector(
     (state: IRootState) => !!state.auth.authData.access
-  );
-  useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch])  
+    );
+    const isNotExecuted = useRef(true);
+    useEffect(() => {
+      if(isNotExecuted.current){
+        isNotExecuted.current = false;
+        dispatch(getProfile());
+      }
+    }, [dispatch])
   
   const ProtectedRoute = (e: JSX.Element) => {
     const isLoading = useSelector(
@@ -50,7 +55,10 @@ function App() {
     
   }
 
-  
+  const LoadingAnimation = () => {
+    return <div>Loading...</div>
+  }
+
   return (
     <Router>
       <Header/>

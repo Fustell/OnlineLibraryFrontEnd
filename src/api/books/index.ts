@@ -8,5 +8,6 @@ export const getBooks = (): AxiosPromise => {
 }
 
 export const getSingleBook = (id:string|undefined): AxiosPromise => {
-    return axiosInstance.get(Endpoints.BOOKS.SINGLEBOOK + id)
+    const response =axiosInstance.get(Endpoints.BOOKS.SINGLEBOOK + id+"/");
+    return response
 }

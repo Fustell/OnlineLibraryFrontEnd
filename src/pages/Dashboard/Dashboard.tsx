@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
 import { IRootState, useAppDispatch } from "../../store";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {getBooks} from "../../store/books/actionsCreators";
 import { Link } from "react-router-dom";
 
 const Dashboard =  () => {
 
     const dispatch = useAppDispatch();
+    const isNotExecuted = useRef(true);
 
     useEffect(() => {
-        dispatch(getBooks());
+        if(isNotExecuted.current){
+          isNotExecuted.current = false;
+          dispatch(getBooks());
+        }
       }, [dispatch])
       
 

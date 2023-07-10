@@ -16,8 +16,8 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/login">Sign in</Nav.Link>
+              <Nav.Link href="/"><Link to="/">Home</Link></Nav.Link>
+              {isLoggined ?<Nav.Link href="/logout"><Link to="/logout">Logout</Link></Nav.Link> :<Nav.Link href="/login"><Link to="/login">Login</Link></Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>

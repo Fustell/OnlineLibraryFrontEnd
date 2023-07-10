@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { IRootState, useAppDispatch } from "../../store";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSingleBook } from "../../store/SingleBook/actionCreator";
 import { useSelector } from "react-redux";
 import { Document, Page, pdfjs } from 'react-pdf';
@@ -12,10 +12,19 @@ const SingleBook = () => {
 
     const dispatch = useAppDispatch();
     const { id } = useParams();
+    const isNotExecuted = useRef(true);
+    const isLoggined = useSelector(
+      (state: IRootState) => !!state.auth.authData.access
+    )
+
     useEffect(() => {
-        dispatch(getSingleBook(id));
+        if(isNotExecuted.current && isLoggined){
+          isNotExecuted.current = false;
+          dispatch(getSingleBook(id));
+        }
       }, [dispatch])
 
+      
     const [isReading, setIsReading] = useState(false);
     
     const singleBook = useSelector(
