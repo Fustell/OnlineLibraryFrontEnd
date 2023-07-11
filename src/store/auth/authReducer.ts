@@ -7,7 +7,7 @@ export interface AuthState {
         error: string | null
     },
     profileData: {
-        profile: string | null,
+        profile: any
         isLoading: boolean,
         error: string | null,
     }
@@ -20,7 +20,7 @@ const initialState: AuthState = {
         error:  null
     },
     profileData: {
-        profile: null,
+        profile: {},
         isLoading: false,
         error:  null,
     }

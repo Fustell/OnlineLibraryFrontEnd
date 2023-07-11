@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import {getBooks} from "../../store/books/actionsCreators";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
+import './Dashboard.scss';
 
 const Dashboard =  () => {
 
@@ -30,22 +31,26 @@ const Dashboard =  () => {
         return <Loading/>
       }
       else{
-    return (<div className="container">
+    return (<div className="container-lg">
+      <div className="row row-cols-6 g-3 books-rows">
         {books && books.map((book) => {
-          return (
-            <div className="card-group col-md-4"  key={book.slug}>
-            <div className="card p-3">
-            <img className="card-img-top img-fluid" src={`${book.title_photo}`} alt="Card image cap"/>
+        return (
+          <div className="col">
+          <div className="card" key={book.slug}>
+            <img src={`${book.title_photo}`} className="card-img-top" alt={`${book.title_photo}`} />
             <div className="card-body">
-            <h5 className="card-title">{book.title}</h5>
-            <p className="card-text">{book.about}</p>
-            <Link to={`/book/${book.slug}`}><button type="button" className="btn btn-primary">Читати</button></Link>
+              <h5 className="card-title">{book.title}</h5>
+              <p className="card-text">
+                {book.about}
+              </p>
+              <Link to={`/book/${book.slug}`}><button type="button" className="btn btn-primary">Читати</button></Link>
             </div>
+          </div>
         </div>
-        </div>
-          );
-        }) }
-      </div>);
+        );
+        })}
+  </div>
+    </div>);
       }
 };
 
