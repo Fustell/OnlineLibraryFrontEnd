@@ -16,12 +16,12 @@ export interface AuthState {
 const initialState: AuthState = {
     authData: {
         access: null,
-        isLoading: true,
+        isLoading: false,
         error:  null
     },
     profileData: {
         profile: null,
-        isLoading: true,
+        isLoading: false,
         error:  null,
     }
 }

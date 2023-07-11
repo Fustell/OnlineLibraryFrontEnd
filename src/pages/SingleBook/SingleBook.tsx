@@ -4,8 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { getSingleBook } from "../../store/SingleBook/actionCreator";
 import { useSelector } from "react-redux";
 import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import Loading from "../../components/Loading";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/legacy/build/pdf.worker.min.js',
+     import.meta.url,
+   ).toString();
 
 
 const SingleBook = () => {
@@ -31,6 +36,10 @@ const SingleBook = () => {
         (state: IRootState) => state.singleBook.bookData
     );
 
+    const isLoadingSingleBook = useSelector(
+      (state: IRootState) => state.singleBook.isLoading
+  );
+      
     const startReading = () => {
         setIsReading(true);
     }
@@ -97,7 +106,13 @@ const SingleBook = () => {
     }
 
 
-    return showingBookPage();
+    if(isLoadingSingleBook){
+      return <Loading/>
+    }
+    else{
+      return showingBookPage();
+
+    }
 }
 
 export default SingleBook;

@@ -3,6 +3,7 @@ import { IRootState, useAppDispatch } from "../../store";
 import { useEffect, useRef } from "react";
 import {getBooks} from "../../store/books/actionsCreators";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const Dashboard =  () => {
 
@@ -21,8 +22,16 @@ const Dashboard =  () => {
         (state: IRootState) => state.books.booksData.list
     );
 
+    const isLoadingBooks = useSelector(
+      (state: IRootState) => state.books.isLoading
+  );
+
+      if(isLoadingBooks){
+        return <Loading/>
+      }
+      else{
     return (<div className="container">
-        { books.map((book) => {
+        {books && books.map((book) => {
           return (
             <div className="card-group col-md-4"  key={book.slug}>
             <div className="card p-3">
@@ -37,6 +46,7 @@ const Dashboard =  () => {
           );
         }) }
       </div>);
+      }
 };
 
 export default Dashboard;
