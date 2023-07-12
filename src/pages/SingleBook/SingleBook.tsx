@@ -66,7 +66,7 @@ const SingleBook = () => {
 
     const showingBookPage = () => {
         if(isReading){
-            return (  <div>
+            return (  <div className="container-lg">
                 <nav>
                   <button onClick={previousPage} disabled={pageNumber <= 1}>
                     Previous
@@ -90,7 +90,7 @@ const SingleBook = () => {
               </div>)
         }
         else{
-            return <div className="container">
+            return <div className="container-lg">
             <div className="card-group col-md-4">
                 <div className="card p-3">
                 <img className="card-img-top img-fluid" src={`${singleBook.title_photo}`} alt="Card image cap"/>

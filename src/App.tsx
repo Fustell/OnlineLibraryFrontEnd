@@ -9,6 +9,7 @@ import { JSX } from 'react/jsx-runtime';
 import { useEffect, useRef } from 'react';
 import { getProfile } from './store/auth/actionCreators';
 import Loading from './components/Loading';
+import Profile from './pages/Profile';
 
 
 function App() {  
@@ -62,6 +63,11 @@ function App() {
           <Route path="/book/:id" element={
                       <ProtectedRoute isLoggined={isLoggined}>
                       <SingleBook/>
+                  </ProtectedRoute>
+          }/>
+          <Route path='/profile' element={
+                      <ProtectedRoute isLoggined={isLoggined}>
+                      <Profile/>
                   </ProtectedRoute>
           }/>
           <Route path='/' element={<Dashboard/>}/>

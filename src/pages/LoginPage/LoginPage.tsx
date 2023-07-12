@@ -7,7 +7,7 @@ const LoginPage = () => {
     const isLoggined = useSelector(
         (state: IRootState) => !!state.auth.authData.access
     )
-    return (<div>
+    return (<div className="container-lg">
             <h1>Main</h1>
             {isLoggined ? <Navigate to="/profile"/>: <Login/>}
         </div>);
