@@ -4,6 +4,13 @@ export interface ILoginRequest {
 
 }
 
+export interface IRegisterRequest {
+    username: string,
+    email:string
+    password: string
+
+}
+
 export interface ILoginResponse {
     access:string
 }

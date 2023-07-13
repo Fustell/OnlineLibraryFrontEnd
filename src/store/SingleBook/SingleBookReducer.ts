@@ -11,6 +11,7 @@ export interface Book {
     annotation: string| null,
     about: string| null,
     book: string| null,
+    year_release: number| null
 }
 export interface SingleBookState {
     bookData:Book
@@ -30,6 +31,7 @@ const initialState: SingleBookState = {
     annotation:  null,
     about:  null,
     book: null,
+    year_release: null
 },
 isLoading: true,
 error: null

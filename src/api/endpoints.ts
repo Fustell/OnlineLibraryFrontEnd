@@ -3,7 +3,8 @@ const Endpoints = {
         LOGIN: "/auth/token/",
         REFRESH: "/auth/token/refresh/",
         LOGOUT: "/auth/logout/",
-        PROFILE:"/auth/profile/"
+        PROFILE:"/auth/profile/",
+        REGISTER:"/auth/register"
     },
 
     BOOKS: {

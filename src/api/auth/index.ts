@@ -7,6 +7,11 @@ export const login = (params:ILoginRequest):AxiosPromise<ILoginResponse> => {
     return axiosInstance.post(Endpoints.AUTH.LOGIN, params);
 }
 
+export const register = (params:ILoginRequest):AxiosPromise<ILoginResponse> => {
+    return axiosInstance.post(Endpoints.AUTH.REGISTER, params);
+}
+
+
 export const refresh = (): AxiosPromise<ILoginResponse> => {
     return axiosInstance.post(Endpoints.AUTH.REFRESH)
 }

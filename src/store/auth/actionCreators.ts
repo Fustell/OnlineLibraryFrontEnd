@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit"
 import api from "../../api"
-import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
-import { loginStart, loginSucess, loginFailure, logoutSuccess, loadProfileStart, loadProfileSucess, loadProfileFailure } from "./authReducer" 
+import { ILoginRequest, ILoginResponse, IRegisterRequest } from "../../api/auth/types"
+import { loginStart, loginSucess, loginFailure, logoutSuccess, loadProfileStart, loadProfileSucess, loadProfileFailure, RegisterSuccess } from "./authReducer" 
 import { AxiosPromise } from "axios"
 import { store } from ".."
 import { isTokenExpired } from "../../utils/jwt"
@@ -23,6 +23,21 @@ export const loginUser =
         dispatch(loginFailure(e.message))
       }
     }
+
+export const registerUser =
+(data: IRegisterRequest) =>
+async (dispatch: Dispatch<any>): Promise<void> => {
+  try {
+    await api.auth.register(data)
+
+    dispatch(RegisterSuccess())
+    
+  } catch (e: any) {
+    console.error(e)
+
+    dispatch(loginFailure(e.message))
+  }
+}
 
 export const logoutUser =
   () =>

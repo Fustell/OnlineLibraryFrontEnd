@@ -24,6 +24,7 @@ const Header = () => {
           <Nav className="me-auto">
               <NavLink to="/" className="nav-link">Home</NavLink>
               {isLoggined ?<Nav.Link className="nav-link" onClick={() => dispatch(logoutUser())}>Logout</Nav.Link> :<NavLink className="nav-link" to="/login">Login</NavLink>}
+              {isLoggined ?<></> :<NavLink className="nav-link" to="/register">Register</NavLink>}
             </Nav>
         <Navbar.Text>
         {isLoggined ? <NavLink to="/profile" className="nav-link">{profileData?.username}</NavLink>:<p></p>}

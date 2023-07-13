@@ -1,0 +1,25 @@
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
+
+  .toolbar-elements{
+    margin-left:15px;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
+.pdf-container{
+  display: flex !important;
+  justify-content: center ;
+}
+
+  .toolbar{
+    display: inline-block;
+    text-align: center;
+  }

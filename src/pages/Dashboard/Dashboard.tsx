@@ -23,11 +23,12 @@ const Dashboard =  () => {
         (state: IRootState) => state.books.booksData.list
     );
 
+
     const isLoadingBooks = useSelector(
       (state: IRootState) => state.books.isLoading
   );
 
-      if(isLoadingBooks){
+      if(isLoadingBooks && books.length == 0){
         return <Loading/>
       }
       else{
@@ -35,8 +36,8 @@ const Dashboard =  () => {
       <div className="row row-cols-6 g-3 books-rows">
         {books && books.map((book) => {
         return (
-          <div className="col">
-          <div className="card" key={book.slug}>
+          <div className="col" key={book.slug}>
+          <div className="card">
             <img src={`${book.title_photo}`} className="card-img-top" alt={`${book.title_photo}`} />
             <div className="card-body">
               <h5 className="card-title">{book.title}</h5>

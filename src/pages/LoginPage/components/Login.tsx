@@ -6,8 +6,8 @@ import { loginUser } from "../../../store/auth/actionCreators";
 const Login = () => {
     const dispatch = useAppDispatch();
 
-    const [username,setUsername] = useState("roman");
-    const [password,setPassword] = useState("12345qwerty");
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
 
 
     const handleSubmit = (e: FormEvent) => {
@@ -19,11 +19,11 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
         <div>
             <label htmlFor="usename">Login</label>
-            <input type="text" name="usename" onChange={e => setUsername(e.target.value)} value="roman"/>
+            <input type="text" name="usename" onChange={e => setUsername(e.target.value)} value=""/>
         </div>
         <div>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" onChange={e => setPassword(e.target.value)} value="12345qwerty" />
+            <input type="password" name="password" onChange={e => setPassword(e.target.value)} value="" />
         </div>
         <button>Submit</button>
         </form>
