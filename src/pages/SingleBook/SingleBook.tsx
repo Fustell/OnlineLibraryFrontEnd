@@ -108,20 +108,6 @@ const SingleBook = () => {
           <h4 className="title text-light">
             {singleBook.title}
           </h4>
-          <div className="d-flex flex-row my-3">
-            <div className="text-warning mb-1 me-2">
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fas fa-star-half-alt"></i>
-              <span className="ms-1">
-                4.5
-              </span>
-            </div>
-            <span className="text"><i className="fas fa-shopping-basket fa-sm mx-1"></i>154 переглядів</span>
-            <span className="text-success ms-2">Доступна</span>
-          </div>
 
           <div className="row">
             <dt className="col-3">Категорія:</dt>

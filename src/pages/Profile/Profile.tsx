@@ -16,11 +16,7 @@ const ProfilePage = () => {
           <div>
           <div className="container-lg rounded mt-5 mb-5">
             <div className="row">
-              <div className="col-md-3 border-end">
-                <div className="list-group mt-3 sidebar-items">
-                  <a  onClick={() => dispatch(logoutUser())} className="list-group-item list-group-item-action">Вийти</a>
-                  <a  className="list-group-item list-group-item-action">Зареєстуватися як автор</a>
-                </div>
+              <div className="col-md-3">
               </div>
               <div className="col-md-5">
                 <div className="p-3 py-5">
@@ -30,7 +26,7 @@ const ProfilePage = () => {
                   <div className="row mt-2">
                     <div className="col-md-6">
                       <label htmlFor="username" className="form-label">Username</label>
-                      <input type="text" className="form-control" id="username" name="username" placeholder="Username" value={profile.username} />
+                      <input type="text" className="form-control" id="username" name="username" placeholder="Username" readOnly value={profile.username} />
                     </div>
                   </div>
                   <div className="row mt-3">
@@ -39,8 +35,8 @@ const ProfilePage = () => {
                       <input type="email" className="form-control" id="email" placeholder="Email" value={profile.email} readOnly />
                     </div>
                   </div>
-                  <div className="mt-5 text-center">
-                    <button className="btn btn-primary" type="button">Save Profile</button>
+                  <div className="mt-3">
+                    <button  onClick={() => dispatch(logoutUser())} className="btn btn-primary">Вийти</button>
                   </div>
                 </div>
               </div>

@@ -30,14 +30,14 @@ function App() {
     const isLoadingAuthData = useSelector(
       (state: IRootState) => !!state.auth.authData.isLoading
     );
-
+      console.log(isLoggined)
       if(isLoggined){
         return children;
       }
-      if(!isLoggined &&  !isLoadingAuthData){
-        return <Loading/>
+      if(!isLoggined){
+        return <p>This book is not available</p>
      }
-      return <p>This book is not available</p>
+      return <Loading/>
   }
 
   const IfNotLoginned = (e:JSX.Element) => {
